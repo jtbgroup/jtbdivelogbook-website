@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jt'B Dive Logbook</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="./images/logo_32.png" />
+        <link href="./css/layout5.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="./js/galleria-1.2.6.min.js"></script>
+
+        <script type="text/javascript">
+            
+            
+            function loadContent(menuId) {
+                document.getElementById('site_article_section').style.height = "auto";
+                $('#site_article_section').load('./html/' + menuId + '.html', null,
+                function(){
+                    adaptContentHeight();  
+                }
+            );
+            }
+            
+            function loadOnStartUp() {
+                loadDefaultPage();
+            };
+
+            function adaptContentHeight() {
+                //margins around menu + padding of the body(top) + 2* body border
+                var headermarginh = 22;
+                var articleh = document.getElementById('site_article_section').offsetHeight;
+                var newArticleHeight = document.documentElement.clientHeight;
+                var headerh = document.getElementById('site_header').offsetHeight + headermarginh;
+                var menuh = document.getElementById('site_menu').offsetHeight;
+                var footerh = document.getElementById('site_footer').offsetHeight;
+                var divh = newArticleHeight - headerh - menuh - footerh ;
+                if(articleh < divh){
+                    document.getElementById('site_article_section').style.height = divh + "px"
+                }
+            }
+
+            function loadDefaultPage() {
+                //	    var url='http://iwebdevel.com/some-post#comment-1'; //if you need to take the current url of the window use: var url=window.location;
+                var url = window.location;
+                var anchor = url.hash; //anchor with the # character
+                var anchor2 = url.hash.substring(1); //anchor without the # character
+                if (anchor) {
+                    loadContent(anchor2);
+                } else {
+                    loadContent('home');
+                }
+            }
+            
+        </script>
+
+    </head>
+
+    <body onload="javascript:loadOnStartUp()" id="site_body">
+        <header id="site_header">
+            <img src="./images/logo_64.png" class="img_center"/> Jt'B Dive logbook
+        </header>
+
+        <nav id="site_menu">
+            <ul>
+                <li><a href="#home" onclick="javascript:loadContent('home')"> <img src="./images/home_64.png" height="24" class="img_center"/>Home</a></li>
+                <li><a href="#features" onclick="javascript:loadContent('features')"><img src="./images/features_32.png" height="24" class="img_center"/>Features</a></li>
+                <li><a href="#screenshots" onclick="javascript:loadContent('screenshots')"><img src="./images/screenshots_48.png" height="24" class="img_center"/>Screenshots</a></li>
+                <li><a href="#revisions" onclick="javascript:loadContent('revisions')"><img src="./images/revisions_64.png" height="24" class="img_center"/>Revisions</a></li>
+                <li><a href="http://sourceforge.net/projects/jtbdivelogbook/files/"
+                       class="menu_link"><img src="./images/download_64.png" height="24" class="img_center"/>Downloads</a></li>
+                <li><a href="http://sourceforge.net/tracker/?group_id=202606&atid=982258"
+                       class="menu_link"><img src="./images/bug_32.png" height="24" class="img_center"/>Report a bug</a></li>
+            </ul>
+        </nav>
+
+        <section id="site_article_section">
+        </section>
+
+        <footer id="site_footer">
+            <table width="100%">
+                <tr>
+                    <td style="text-align:left;">
+                        <img src="./images/html5_32.png" height="24" class="img_center"/>
+                    </td>
+                    <td>
+                        Jt'B Project site | provided by Gautier
+                        Vanderslyen
+                    </td>
+                </tr>
+            </table>
+        </footer>
+
+    </body>
+</html>

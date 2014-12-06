@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jt'B Dive Logbook</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" type="image/png" href="./images/logo_32.png" />
+<LINK href="./css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="./js/galleria-1.2.6.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#menu a').click(function() {
+			loadContent($(this).attr('id'));
+		});
+	});
+
+	function loadContent(menuId) {
+		$('#body_content').load('./html/' + menuId + '.html');
+		adaptContentHeight();
+	}
+	function loadOnStartUp() {
+		loadDefaultPage();
+	};
+
+	function adaptContentHeight() {
+		var wraph = document.getElementById('wrap').offsetHeight;
+		var headerh = document.getElementById('header').offsetHeight;
+		var footerh = document.getElementById('footer').offsetHeight;
+		var divh = wraph - headerh - footerh - 50;
+
+		document.getElementById('body_content').style.height = divh + "px";
+	}
+
+	function loadDefaultPage() {
+		//	    var url='http://iwebdevel.com/some-post#comment-1'; //if you need to take the current url of the window use: var url=window.location;
+		var url = window.location;
+		var anchor = url.hash; //anchor with the # character
+		var anchor2 = url.hash.substring(1); //anchor without the # character
+		if (anchor) {
+			loadContent(anchor2);
+		} else {
+			loadContent('home');
+		}
+	}
+</script>
+
+</head>
+
+<body onload="javascript:loadOnStartUp()" class="gradient">
+	<div id="wrap">
+		<div id="header">
+			<h1>Jt'B Dive logbook</h1>
+			<div style="position:absolute; top:10px; right:10px;"><img src="./images/logo_64.png"/></div>
+			<div id="menu">
+				<a href="#home" id=home class="menu_link">Home</a> | <a
+					href="#screenshots" id=screenshots class="menu_link">Screenshots</a>
+				| <a href="http://sourceforge.net/projects/jtbdivelogbook/files/"
+					class="menu_link">Downloads</a> | <a href="#revisions" id=revisions
+					class="menu_link">Revisions</a> | <a
+					href="http://sourceforge.net/tracker/?group_id=202606&atid=982258"
+					class="menu_link">Report a bug</a>
+			</div>
+
+		</div>
+
+		<div id="body_content"></div>
+	</div>
+
+	<div id="footer">Jt'B Project site | provided by Gautier
+		Vanderslyen</div>
+
+</body>
+</html>

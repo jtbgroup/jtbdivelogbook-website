@@ -1,0 +1,148 @@
+/*  
+Sticky Footer Solution
+by Steve Hatcher 
+http://stever.ca
+http://www.cssstickyfooter.com
+*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* must declare 0 margins on everything, also for main layout components use padding, not 
+vertical margins (top and bottom) to add spacing, else those margins get added to total height 
+and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
+html,body {
+	height: 100%;
+	width: 90%;
+	margin: auto;
+}
+
+#header,#footer,#body_content {
+	width: 80%;
+	overflow: auto;
+}
+
+#header {
+	color: #EEEEEE;
+	border-radius: 15px;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	height: 80px;
+}
+
+#body_content { /* 	border-radius: 15px; */
+	position: fixed;
+	top: 100px; /*equals header + footer*/
+	bottom: 20px;
+	padding: 20px;
+	color: #111111;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	height: 20px;
+	color: #EEEEEE;
+	border-radius: 15px;
+	font-size: 10px;
+	font-style: italic;
+	text-align: right;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 10px;
+}
+
+/*Opera Fix*/
+body:before { /* thanks to Maleika (Kohoutec)*/
+	content: "";
+	height: 100%;
+	float: left;
+	width: 0;
+	margin-top: -32767px; /* thank you Erik J - negate effect of float*/
+}
+
+/* IMPORTANT
+
+You also need to include this conditional style in the <head> of your HTML file to feed this style to IE 6 and lower and 8 and higher.
+
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+
+*/
+body {
+/* 	background: rgb(206, 220, 231); Old browsers */
+/* 	background: -moz-linear-gradient(top, rgba(206, 220, 231, 1) 0%, */
+/* 		rgba(89, 106, 114, 1) 100% ); FF3.6+ */
+/* 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(206, */
+/* 		220, 231, 1) ), color-stop(100%, rgba(89, 106, 114, 1) ) ); */
+/*	Chrome,Safari4+
+/* 	background: -webkit-linear-gradient(top, rgba(206, 220, 231, 1) 0%, */
+/* 		rgba(89, 106, 114, 1) 100% ); Chrome10+,Safari5.1+ */
+/* 	background: -o-linear-gradient(top, rgba(206, 220, 231, 1) 0%, */
+/* 		rgba(89, 106, 114, 1) 100% ); Opera 11.10+ */
+/* 	background: -ms-linear-gradient(top, rgba(206, 220, 231, 1) 0%, */
+/* 		rgba(89, 106, 114, 1) 100% ); IE10+ */
+/* 	background: linear-gradient(top, rgba(206, 220, 231, 1) 0%, */
+/* 		rgba(89, 106, 114, 1) 100% ); W3C */
+/* 	filter: progid :                            */
+/* 		     DXImageTransform.Microsoft.gradient (        */
+		  
+		        
+/* 		               startColorstr =                 */
+/* 		                '#cedce7', endColorstr =                              */
+/* 		   '#596a72', GradientType =            */
+		        
+/* 		            0 ); */
+	
+background: rgb(207,231,250); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(207,231,250,1) 0%, rgba(153,172,191,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(207,231,250,1)), color-stop(100%,rgba(153,172,191,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(153,172,191,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(153,172,191,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(153,172,191,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(153,172,191,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#99acbf',GradientType=0 ); /* IE6-9 */
+
+}
+
+div#header,div#footer {
+	background: rgb(125, 126, 125); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(125, 126, 125, 1) 0%,
+		rgba(14, 14, 14, 1) 100% ); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(125,
+		126, 125, 1) ), color-stop(100%, rgba(14, 14, 14, 1) ) );
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(125, 126, 125, 1) 0%,
+		rgba(14, 14, 14, 1) 100% ); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(125, 126, 125, 1) 0%,
+		rgba(14, 14, 14, 1) 100% ); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(125, 126, 125, 1) 0%,
+		rgba(14, 14, 14, 1) 100% ); /* IE10+ */
+	background: linear-gradient(top, rgba(125, 126, 125, 1) 0%,
+		rgba(14, 14, 14, 1) 100% ); /* W3C */
+	filter: progid :                          
+		    DXImageTransform.Microsoft.gradient (      
+		  
+		        
+		              startColorstr =               
+		               '#7d7e7d', endColorstr =                            
+		  '#0e0e0e', GradientType =          
+		        
+		           0 );
+	/* IE6-9 */
+}
+
+a.menu_link {
+	color: white;
+}
+
+#gallery {
+	height: 100%;
+}
